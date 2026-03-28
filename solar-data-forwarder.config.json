@@ -1,0 +1,16 @@
+{
+  "recipients": [
+    {
+      "id": "email-onboarding",
+      "type": "email",
+      "to": "onboarding@winder.ua",
+      "enabled": true
+    },
+    {
+      "id": "telegram-default",
+      "type": "telegram",
+      "chatIdEnv": "FORWARDER_TELEGRAM_CHAT_ID",
+      "enabled": true
+    }
+  ]
+}
