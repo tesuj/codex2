@@ -1,0 +1,27 @@
+{
+  "name": "pvgis-questionnaire",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "forwarder:build": "tsc -p tsconfig.server.json",
+    "forwarder:start": "npm run forwarder:build && node dist-server/server/index.js"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/nodemailer": "^7.0.11",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "nodemailer": "^8.0.4",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}
