@@ -1,0 +1,392 @@
+:root {
+  font-family: Aptos, "Segoe UI", "Helvetica Neue", sans-serif;
+  color: #14213d;
+  background:
+    radial-gradient(circle at top left, rgba(255, 214, 153, 0.65), transparent 28%),
+    radial-gradient(circle at top right, rgba(79, 172, 254, 0.2), transparent 24%),
+    linear-gradient(180deg, #f7f7f2 0%, #eef3f7 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.pageShell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.card {
+  position: relative;
+  width: min(100%, 860px);
+  overflow: hidden;
+  border: 1px solid rgba(20, 33, 61, 0.08);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: 0 24px 90px rgba(20, 33, 61, 0.14);
+  backdrop-filter: blur(16px);
+  padding: 32px;
+}
+
+.cardGlow {
+  position: absolute;
+  inset: -30% auto auto -10%;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  background: rgba(255, 196, 120, 0.16);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.stepHeader,
+.resultHeader,
+.questionBlock,
+.fieldBlock,
+.actions,
+.submitStatus {
+  position: relative;
+  z-index: 1;
+}
+
+.stepHeader,
+.resultHeader {
+  margin-bottom: 28px;
+}
+
+.stepBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(20, 33, 61, 0.08);
+  color: #23406a;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.successBadge {
+  background: rgba(42, 157, 143, 0.14);
+  color: #1d6b61;
+}
+
+.progressTrack {
+  margin-top: 16px;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(20, 33, 61, 0.08);
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffb347 0%, #ff8c42 100%);
+  transition: width 220ms ease;
+}
+
+.questionBlock h1,
+.resultHeader h1 {
+  margin: 0 0 10px;
+  max-width: 720px;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.questionBlock p,
+.resultHeader p {
+  margin: 0;
+  max-width: 640px;
+  color: #5e6a7d;
+  font-size: 1rem;
+}
+
+.fieldBlock {
+  margin-top: 34px;
+}
+
+.textInput {
+  width: 100%;
+  min-height: 62px;
+  border: 1px solid rgba(35, 64, 106, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 18px 20px;
+  color: #14213d;
+  font-size: 1.05rem;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.textInput:focus {
+  border-color: rgba(255, 140, 66, 0.9);
+  box-shadow: 0 0 0 4px rgba(255, 179, 71, 0.16);
+  transform: translateY(-1px);
+}
+
+.textInput::placeholder {
+  color: #8d98aa;
+}
+
+.radioGroup {
+  display: grid;
+  gap: 14px;
+}
+
+.radioCard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 62px;
+  border: 1px solid rgba(35, 64, 106, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 16px 18px;
+  color: #14213d;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.radioCard:hover {
+  border-color: rgba(255, 140, 66, 0.5);
+  transform: translateY(-1px);
+}
+
+.radioCard:has(input:checked) {
+  border-color: rgba(255, 140, 66, 0.9);
+  box-shadow: 0 0 0 4px rgba(255, 179, 71, 0.16);
+}
+
+.radioCard input {
+  width: 18px;
+  height: 18px;
+  accent-color: #ff8c42;
+}
+
+.monthGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.monthField {
+  display: grid;
+  gap: 8px;
+}
+
+.monthField span,
+.resultSection h2 {
+  color: #23406a;
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.monthInput {
+  min-height: 56px;
+  padding: 14px 16px;
+}
+
+.errorMessage,
+.submitStatus {
+  min-height: 24px;
+  margin: 10px 4px 0;
+  font-size: 0.94rem;
+}
+
+.errorMessage {
+  color: #bb3e03;
+}
+
+.errorPlaceholder {
+  min-height: 24px;
+  margin-top: 10px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.actionsWrap {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 52px;
+  border-radius: 16px;
+  padding: 0 22px;
+  font-weight: 700;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover {
+  transform: translateY(-1px);
+}
+
+.primaryButton {
+  border: none;
+  background: linear-gradient(135deg, #ffb347 0%, #ff8c42 100%);
+  color: #14213d;
+  box-shadow: 0 14px 28px rgba(255, 140, 66, 0.22);
+}
+
+.secondaryButton {
+  border: 1px solid rgba(35, 64, 106, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+  color: #23406a;
+}
+
+.resultTableWrap {
+  overflow-x: auto;
+  margin-top: 28px;
+  border: 1px solid rgba(35, 64, 106, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.resultTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+}
+
+.resultTable th,
+.resultTable td {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(35, 64, 106, 0.08);
+  text-align: left;
+  vertical-align: top;
+}
+
+.resultTable th {
+  background: rgba(20, 33, 61, 0.04);
+  font-size: 0.95rem;
+}
+
+.resultTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.resultSection + .resultSection {
+  margin-top: 28px;
+}
+
+.resultSection h2 {
+  margin: 0 0 12px;
+}
+
+.monthTable {
+  min-width: 100%;
+}
+
+.integrationNote {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(35, 64, 106, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #516074;
+  font-size: 0.95rem;
+}
+
+.submitStatus {
+  color: #516074;
+}
+
+.submitStatus--success {
+  color: #1d6b61;
+}
+
+.submitStatus--queued {
+  color: #9a5a00;
+}
+
+.submitStatus--submitting {
+  color: #23406a;
+}
+
+.primaryButton:disabled,
+.secondaryButton:disabled {
+  cursor: default;
+  opacity: 0.7;
+  transform: none;
+}
+
+@media (max-width: 720px) {
+  .pageShell {
+    padding: 16px;
+  }
+
+  .card {
+    border-radius: 22px;
+    padding: 22px;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions > span {
+    display: none;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+
+  .monthGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .resultTable {
+    min-width: 100%;
+  }
+}
