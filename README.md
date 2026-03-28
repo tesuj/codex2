@@ -1,4 +1,4 @@
-# PVGIS Questionnaire
+# Solar Questionnaire
 
 Локальное веб-приложение на `React + TypeScript + Vite` и простой локальный сервер `solar-data-forwarder`.
 
